@@ -63,7 +63,7 @@ void setup(){
   ordreDepart.data = false;
   
   //Servomoteurs
-  Serial.begin(9600);
+  Serial.begin(57600);
 
   servo1.attach(7);
   servo1.write(0);
