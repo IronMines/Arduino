@@ -107,6 +107,9 @@ void loop()
     delay(1);
     if(analogRead(A15)<100){
       contact = 0;
+      digitalWrite(13,HIGH);
+      delay(200);
+      digitalWrite(13,LOW);
     }
   }
 }
