@@ -73,7 +73,6 @@ void setup()
     nh.advertise(*sonars.get(i));
   }
   
-  
   //On initialise les messages
   aSonar.data = 0;
 }
