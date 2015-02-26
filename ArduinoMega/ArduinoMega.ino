@@ -80,6 +80,7 @@ void loop()
   ordreDepart.data = false;
   while(contact == 0){
     depart.publish(&ordreDepart);
+    delay(500);
     nc.spinOnce();
     if(analogRead(A15)>600){
       for(int i=0;i<=5;i++){
