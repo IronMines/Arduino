@@ -18,12 +18,12 @@ LinkedList<ros::Publisher*> sonars;
 
 void checkAllSonars()
 {
-   for(int i = 0 ; i < sonars.size() ; i++)
+   for(int i = 0 ; i < min(sonars.size(), 3) ; i++)
     {
       aSonar.data = readSonar(11-i);
       sonars.get(i)->publish(&aSonar);
     }
-  if (sonars.size() == 4) {
+  if (sonars.size() >= 4) {
     aSonar.data = readSonar(6);
     sonars.get(3)->publish(&aSonar);
     if (sonars.size() == 5) {
