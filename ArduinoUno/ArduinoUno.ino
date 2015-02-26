@@ -4,7 +4,7 @@
 
 int clock = 0;
 
-ros::NodeHandle nh;
+ros::NodeHandle nc;
 
 std_msgs::UInt16 aSonar;
 
@@ -58,7 +58,7 @@ long microsecondsToMilimeters(long microseconds)
 
 void setup()
 {
-  nh.initNode();
+  nc.initNode();
   //On doit declarer chaque publisher au pres de ROS
   sonars = LinkedList<ros::Publisher*>();
   
@@ -70,7 +70,7 @@ void setup()
   
   for(int i = 0 ; i < sonars.size() ; i++)
   {
-    nh.advertise(*sonars.get(i));
+    nc.advertise(*sonars.get(i));
   }
   
   //On initialise les messages
@@ -80,7 +80,7 @@ void setup()
 void loop()
 {
   checkAllSonars();
-  nh.spinOnce();
+  nc.spinOnce();
   
   delay(1);
 }
