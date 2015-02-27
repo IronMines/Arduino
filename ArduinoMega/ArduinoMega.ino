@@ -20,7 +20,7 @@ Servo servo2;
 void servo_f(const std_msgs::UInt16& cmd_msg)
 {
    if(cmd_msg.data==0){
-        servo1.write(45);
+        servo1.write(25);
         digitalWrite(13,HIGH);
         delay(200);
         digitalWrite(13,LOW);
