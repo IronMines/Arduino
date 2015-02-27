@@ -66,9 +66,9 @@ void setup(){
   Serial.begin(57600);
 
   servo1.attach(7);
-  servo1.write(0);
+  servo1.write(25);
 
-  servo2.attach(8);
+  servo2.attach(9);
   servo2.write(0);
 
   nc.subscribe(sub);
