@@ -14,8 +14,7 @@ void servo_f(const std_msgs::UInt16& cmd_msg);
 ros::Subscriber<std_msgs::UInt16> sub("servo", &servo_f);
 ros::Publisher depart("depart", &ordreDepart);
 
-Servo servo1;
-Servo servo2;
+Servo servo;
 
 void servo_f(const std_msgs::UInt16& cmd_msg){
     if(cmd_msg.data >=0 && cmd_msg.data <= 180){
@@ -49,10 +48,6 @@ void verifierContacteur(){
 
 void setup(){
   
-  //Diode
-  pinMode(13,OUTPUT);
-  digitalWrite(13,LOW);
-  
   //Contacteur
   contact = 0;
   pinMode(A15,INPUT);
@@ -65,25 +60,15 @@ void setup(){
   //Servomoteurs
   Serial.begin(57600);
 
-  servo1.attach(7);
-  servo1.write(0);
-  servo1.write(0);
+  servo.attach(7);
+  servo.write(0);
   
-  servo2.attach(9);
-  servo2.write(0);
-
   nc.subscribe(sub);
 }
 
 void loop()
 {
-  digitalWrite(13,HIGH);
-  delay(1000);
-//  verifierContacteur();
-//  nc.spinOnce();
-  delay(1000);
-  servo1.write(90);
-  digitalWrite(13,LOW);
-  delay(1000);
-  servo1.write(0);
+  delay(100);
+  verifierContacteur();
+  nc.spinOnce();
 }
