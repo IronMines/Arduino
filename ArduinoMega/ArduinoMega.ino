@@ -17,22 +17,10 @@ ros::Publisher depart("depart", &ordreDepart);
 Servo servo1;
 Servo servo2;
 
-void servo_f(const std_msgs::UInt16& cmd_msg)
-{
-   if(cmd_msg.data==0){
-        servo1.write(25);
-   }
-   if(cmd_msg.data==1){
-        servo1.write(170);
-   }
-   if(cmd_msg.data==2){
-        servo2.write(50);
-   }
-   if(cmd_msg.data==3){
-        servo2.write(180);
-        delay(1000);
-        servo2.write(0);
-   }
+void servo_f(const std_msgs::UInt16& cmd_msg){
+    if(cmd_msg.data >=0 && cmd_msg.data <= 180){
+        servo.write(cmd_msg.data);
+    }
 }
 
 void verifierContacteur(){
